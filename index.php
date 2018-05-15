@@ -183,6 +183,253 @@
             <br>
             <br>
             <input type="submit" value="Anschauen" />
+            <?php
+            if (isset($_POST["kanton"])){
+                $kanton = $_POST["kanton"];
+
+                diese($kanton);
+
+
+            }
+            function diese($kanton){
+                if ($kanton == "Kanton Thurgau"){
+                    echo '<img src="img/Diagramm1.PNG">';}
+                if ($kanton == "Bezirk Arbon"){
+                    echo"gut";
+                }
+                if ($kanton == "Bezirk Frauenfeld"){
+                    echo"gut";
+                }
+                if ($kanton == "Bezirk Kreuzlingen"){
+                    echo"gut";
+                }
+                if ($kanton == "Bezirk Münchwilen"){
+                    echo"gut";
+                }
+                if ($kanton == "Bezirk Weinfelden"){
+                    echo"gut";
+                }}
+
+            if (isset($_POST["bezirk"])) {
+                $bezirk = $_POST["bezirk"];
+
+                diese1($bezirk);
+            }
+
+            function diese1($bezirk){
+                if ($bezirk == "Amriswil"){
+                    echo"gut";}
+                if ($bezirk == "Arbon"){
+                    echo"gut";
+                }
+                if ($bezirk == "Dozwil"){
+                    echo"gut";
+                }
+                if ($bezirk == "Egnach"){
+                    echo"gut";
+                }
+                if ($bezirk == "Hefenhofen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Horn"){
+                    echo"gut";
+                }
+                if ($bezirk == "Kesswil"){
+                    echo"gut";
+                }
+                if ($bezirk == "Roggwil"){
+                    echo "";
+                }
+                if ($bezirk == "Romanshorn"){
+                    echo"gut";
+                }
+                if ($bezirk == "Salmsach"){
+                    echo"gut";
+                } if ($bezirk == "Sommeri"){
+                    echo"gut";
+                } if ($bezirk == "Uttwil"){
+                    echo"gut";
+                } if ($bezirk == "Basadingen-Schlattingen"){
+                    echo"gut";
+                } if ($bezirk == "Berlingen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Diessenhofen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Eschenz"){
+                    echo"gut";
+                }
+                if ($bezirk == "Felben-Wellhausen
+"){
+                    echo"gut";}
+                if ($bezirk == "Frauenfeld"){
+                    echo"gut";
+                }
+                if ($bezirk == "Gachnang"){
+                    echo"gut";
+                }
+                if ($bezirk == "Herdern"){
+                    echo"gut";
+                }
+                if ($bezirk == "Homburg"){
+                    echo"gut";
+                }
+                if ($bezirk == "Hüttlingen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Mammern"){
+                    echo"gut";
+                }
+                if ($bezirk == "Matzingen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Müllheim"){
+                    echo"gut";
+                }
+                if ($bezirk == "Neunforn"){
+                    echo"gut";
+                } if ($bezirk == "Phyn"){
+                    echo"gut";
+                } if ($bezirk == "Schlatt"){
+                    echo"gut";
+                } if ($bezirk == "Steckborn"){
+                    echo"gut";
+                } if ($bezirk == "Stettfurt"){
+                    echo"gut";
+                }
+                if ($bezirk == "Thundorf"){
+                    echo"gut";
+                }
+                if ($bezirk == "Uesslingen-Buch"){
+                    echo"gut";
+                }
+                if ($bezirk == "Wagenhausen"){
+                    echo"gut";}
+                if ($bezirk == "Warth-Weiningen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Altnau"){
+                    echo"gut";
+                }
+                if ($bezirk == "Bottighofen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Ermatingen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Gottlieben"){
+                    echo"gut";
+                }
+                if ($bezirk == "Güttingen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Kemmental"){
+                    echo"gut";
+                }
+                if ($bezirk == "Kreuzlingen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Langenrickenback"){
+                    echo"gut";
+                } if ($bezirk == "Lengwil"){
+                    echo"gut";
+                } if ($bezirk == "Münsterlingen"){
+                    echo"gut";
+                } if ($bezirk == "Raperswil"){
+                    echo"gut";
+                } if ($bezirk == "Salenstein"){
+                    echo"gut";
+                }
+                if ($bezirk == "Tägerwilen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Wäldi"){
+                    echo"gut";
+                }
+                if ($bezirk == "Aadorf"){
+                    echo"gut";}
+                if ($bezirk == "Bettwiesen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Bichelsee-Balterswil"){
+                    echo"gut";
+                }
+                if ($bezirk == "Braunau"){
+                    echo"gut";
+                }
+                if ($bezirk == "Eschlikon"){
+                    echo"gut";
+                }
+                if ($bezirk == "Fischingen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Lommis"){
+                    echo"gut";
+                }
+                if ($bezirk == "Münchwilen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Rickenbach"){
+                    echo"gut";
+                }
+                if ($bezirk == "Sirnach"){
+                    echo"gut";
+                } if ($bezirk == "Tobel-Tägerschen"){
+                    echo"gut";
+                } if ($bezirk == "Sulgen"){
+                    echo"gut";
+                } if ($bezirk == "Wängi"){
+                    echo"gut";
+                } if ($bezirk == "Wilen"){
+                    echo"gut";
+                }
+
+                if ($bezirk == "Affeltrangen"){
+                    echo"gut";}
+                if ($bezirk == "Amlikon-Bissegg"){
+                    echo"gut";
+                }
+                if ($bezirk == "Berg"){
+                    echo"gut";
+                }
+                if ($bezirk == "Birwinken"){
+                    echo"gut";
+                }
+                if ($bezirk == "Bischofszell"){
+                    echo"gut";
+                }
+                if ($bezirk == "Erlen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Hauptwil-Gottshaus"){
+                    echo"gut";
+                }
+                if ($bezirk == "Hohentannen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Kradolf-Schönenberg"){
+                    echo"gut";
+                }
+                if ($bezirk == "Märstetten"){
+                    echo"gut";
+                } if ($bezirk == "Schönholzerswilen"){
+                    echo"gut";
+                } if ($bezirk == "Sulgen"){
+                    echo"gut";
+                } if ($bezirk == "Weinfelden"){
+                    echo"gut";
+                } if ($bezirk == "Wigoltingen"){
+                    echo"gut";
+                }
+                if ($bezirk == "Wuppenau"){
+                    echo"gut";
+                }
+                if ($bezirk == "Zihlschlacht-Sitterdorf"){
+                    echo"gut";
+                }
+            }
+            ?>
 </div>
 
 </div>
@@ -190,253 +437,7 @@
 
 </form>
 </body>
-<?php
-if (isset($_POST["kanton"])){
-$kanton = $_POST["kanton"];
 
-diese($kanton);
-
-
-}
-function diese($kanton){
-    if ($kanton == "Kanton Thurgau"){
-        echo"gut";}
-    if ($kanton == "Bezirk Arbon"){
-        echo"gut";
-    }
-    if ($kanton == "Bezirk Frauenfeld"){
-        echo"gut";
-    }
-    if ($kanton == "Bezirk Kreuzlingen"){
-        echo"gut";
-    }
-    if ($kanton == "Bezirk Münchwilen"){
-        echo"gut";
-    }
-    if ($kanton == "Bezirk Weinfelden"){
-        echo"gut";
-    }}
-
-if (isset($_POST["bezirk"])) {
-    $bezirk = $_POST["bezirk"];
-
-    diese1($bezirk);
-}
-
-function diese1($bezirk){
-    if ($bezirk == "Amriswil"){
-        echo"gut";}
-    if ($bezirk == "Arbon"){
-        echo"gut";
-    }
-    if ($bezirk == "Dozwil"){
-        echo"gut";
-    }
-    if ($bezirk == "Egnach"){
-        echo"gut";
-    }
-    if ($bezirk == "Hefenhofen"){
-        echo"gut";
-    }
-    if ($bezirk == "Horn"){
-        echo"gut";
-    }
-    if ($bezirk == "Kesswil"){
-        echo"gut";
-    }
-    if ($bezirk == "Roggwil"){
-        echo "";
-    }
-    if ($bezirk == "Romanshorn"){
-        echo"gut";
-    }
-    if ($bezirk == "Salmsach"){
-        echo"gut";
-    } if ($bezirk == "Sommeri"){
-        echo"gut";
-    } if ($bezirk == "Uttwil"){
-        echo"gut";
-    } if ($bezirk == "Basadingen-Schlattingen"){
-        echo"gut";
-    } if ($bezirk == "Berlingen"){
-        echo"gut";
-    }
-    if ($bezirk == "Diessenhofen"){
-        echo"gut";
-    }
-    if ($bezirk == "Eschenz"){
-        echo"gut";
-    }
-    if ($bezirk == "Felben-Wellhausen
-"){
-        echo"gut";}
-    if ($bezirk == "Frauenfeld"){
-        echo"gut";
-    }
-    if ($bezirk == "Gachnang"){
-        echo"gut";
-    }
-    if ($bezirk == "Herdern"){
-        echo"gut";
-    }
-    if ($bezirk == "Homburg"){
-        echo"gut";
-    }
-    if ($bezirk == "Hüttlingen"){
-        echo"gut";
-    }
-    if ($bezirk == "Mammern"){
-        echo"gut";
-    }
-    if ($bezirk == "Matzingen"){
-        echo"gut";
-    }
-    if ($bezirk == "Müllheim"){
-        echo"gut";
-    }
-    if ($bezirk == "Neunforn"){
-        echo"gut";
-    } if ($bezirk == "Phyn"){
-        echo"gut";
-    } if ($bezirk == "Schlatt"){
-        echo"gut";
-    } if ($bezirk == "Steckborn"){
-        echo"gut";
-    } if ($bezirk == "Stettfurt"){
-        echo"gut";
-    }
-    if ($bezirk == "Thundorf"){
-        echo"gut";
-    }
-    if ($bezirk == "Uesslingen-Buch"){
-        echo"gut";
-    }
-    if ($bezirk == "Wagenhausen"){
-        echo"gut";}
-    if ($bezirk == "Warth-Weiningen"){
-        echo"gut";
-    }
-    if ($bezirk == "Altnau"){
-        echo"gut";
-    }
-    if ($bezirk == "Bottighofen"){
-        echo"gut";
-    }
-    if ($bezirk == "Ermatingen"){
-        echo"gut";
-    }
-    if ($bezirk == "Gottlieben"){
-        echo"gut";
-    }
-    if ($bezirk == "Güttingen"){
-        echo"gut";
-    }
-    if ($bezirk == "Kemmental"){
-        echo"gut";
-    }
-    if ($bezirk == "Kreuzlingen"){
-        echo"gut";
-    }
-    if ($bezirk == "Langenrickenback"){
-        echo"gut";
-    } if ($bezirk == "Lengwil"){
-        echo"gut";
-    } if ($bezirk == "Münsterlingen"){
-        echo"gut";
-    } if ($bezirk == "Raperswil"){
-        echo"gut";
-    } if ($bezirk == "Salenstein"){
-        echo"gut";
-    }
-    if ($bezirk == "Tägerwilen"){
-        echo"gut";
-    }
-    if ($bezirk == "Wäldi"){
-        echo"gut";
-    }
-    if ($bezirk == "Aadorf"){
-        echo"gut";}
-    if ($bezirk == "Bettwiesen"){
-        echo"gut";
-    }
-    if ($bezirk == "Bichelsee-Balterswil"){
-        echo"gut";
-    }
-    if ($bezirk == "Braunau"){
-        echo"gut";
-    }
-    if ($bezirk == "Eschlikon"){
-        echo"gut";
-    }
-    if ($bezirk == "Fischingen"){
-        echo"gut";
-    }
-    if ($bezirk == "Lommis"){
-        echo"gut";
-    }
-    if ($bezirk == "Münchwilen"){
-        echo"gut";
-    }
-    if ($bezirk == "Rickenbach"){
-        echo"gut";
-    }
-    if ($bezirk == "Sirnach"){
-        echo"gut";
-    } if ($bezirk == "Tobel-Tägerschen"){
-        echo"gut";
-    } if ($bezirk == "Sulgen"){
-        echo"gut";
-    } if ($bezirk == "Wängi"){
-        echo"gut";
-    } if ($bezirk == "Wilen"){
-        echo"gut";
-    }
-
-    if ($bezirk == "Affeltrangen"){
-        echo"gut";}
-    if ($bezirk == "Amlikon-Bissegg"){
-        echo"gut";
-    }
-    if ($bezirk == "Berg"){
-        echo"gut";
-    }
-    if ($bezirk == "Birwinken"){
-        echo"gut";
-    }
-    if ($bezirk == "Bischofszell"){
-        echo"gut";
-    }
-    if ($bezirk == "Erlen"){
-        echo"gut";
-    }
-    if ($bezirk == "Hauptwil-Gottshaus"){
-        echo"gut";
-    }
-    if ($bezirk == "Hohentannen"){
-        echo"gut";
-    }
-    if ($bezirk == "Kradolf-Schönenberg"){
-        echo"gut";
-    }
-    if ($bezirk == "Märstetten"){
-        echo"gut";
-    } if ($bezirk == "Schönholzerswilen"){
-        echo"gut";
-    } if ($bezirk == "Sulgen"){
-        echo"gut";
-    } if ($bezirk == "Weinfelden"){
-        echo"gut";
-    } if ($bezirk == "Wigoltingen"){
-        echo"gut";
-    }
-    if ($bezirk == "Wuppenau"){
-        echo"gut";
-    }
-    if ($bezirk == "Zihlschlacht-Sitterdorf"){
-        echo"gut";
-    }
-}
-?>
 
 
 </html>
