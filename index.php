@@ -245,7 +245,7 @@ function diese1($bezirk){
         echo"gut";
     }
     if ($bezirk == "Roggwil"){
-        echo"gut";
+        echo "";
     }
     if ($bezirk == "Romanshorn"){
         echo"gut";
