@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <title>Startpage</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="lib/leaflet.js"></script>
+    <script src="lib/leaflet.css"></script>
+    <script src="data/countries.geojson"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Cantora One' rel='stylesheet'>
     <a href="login.php"><h5 id="login">login</h5></a>
@@ -71,9 +75,13 @@
         top: 20px;
 
     }
+    #mapid { height: 180px; }
 
 
 
+</style>
+<style type="text/css">
+    #map {height: 400px;}
 </style>
 <body id="container" >
 
@@ -83,7 +91,15 @@
     <img src="img/Thurgau.PNG" style="height: 400px; width: 700px; >
     <div>
         <form method="post" action="index.php">
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([43.8376,18.3564], 13);
+        var thurgauLayer = L.geoJSON(thurgau).addTo(Map)
+        map.fitBounds(thurgauLayer.getBounds());
+    </script>
     <div>
+
+
         <form method="post" action="index.php">
         <label>Bezirke</label>
         <select class="form-control" name="kanton">
