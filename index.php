@@ -75,7 +75,7 @@
         top: 20px;
 
     }
-    #mapid { height: 180px; }
+
 
 
 
@@ -88,16 +88,12 @@
 <div class="form-group" >
     <label id="rangeValLabel">Ständige Wohnbevölkerung ab 2015</label>
     <input type="range" min="2015" max="2018" step="1" name="anzTickets" oninput="document.getElementById('rangeValLabel').innerHTML = 'Wohnbevölkerung im Jahr: ' + this.value;">
-    <img src="img/Thurgau.PNG" style="height: 400px; width: 700px; >
+
+
+    <form method="post" action="index.php">
     <div>
-        <form method="post" action="index.php">
-    <div id="map"></div>
-    <script>
-        var map = L.map('map').setView([43.8376,18.3564], 13);
-        var thurgauLayer = L.geoJSON(thurgau).addTo(Map)
-        map.fitBounds(thurgauLayer.getBounds());
-    </script>
-    <div>
+
+
 
 
         <form method="post" action="index.php">
