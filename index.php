@@ -33,6 +33,8 @@
 
 </head>
 <style>
+
+
     h2{
         font-family: 'Audiowide';font-size: 50px;
         color:   bisque; }
@@ -50,26 +52,26 @@
 
     label {
 
-        font-family: 'Cantora One';font-size: 20px;
+        font-family: 'Cantora One';font-size: 30px;
         color: black;
         padding-left: 20px;
     }
      h5{
 
-        font-family: 'Cantora One';font-size: 20px;
+        font-family: 'Cantora One';font-size: 30px;
         color: black;
-        padding-left: 20px;
+
     }
-    #container2
+    body
     {
         width: 1800px;
-
         margin-left: auto;
         margin-right: auto;
         background-size: contain;
         background-repeat: no-repeat;
         background-color:  white;
         background-image: url("img/background.jpg");
+        box-sizing: border-box;
 
     }
 
@@ -79,7 +81,7 @@
       height: 100px;
       float: right;
       margin-right: 150px;
-      margin-top: 300px;
+      margin-top: 200px;
       background-size: cover;
       background-color:  white;
   }
@@ -97,12 +99,11 @@
         top: 20px;
 
     }
-    footer {
+  #bezirke {
 
-        width: 300px;
-        float: bottom;
-        height: 600px;
-    }
+      width: 300px;
+      float: bottom;
+  }
 
 #wappen {
     margin-left: 150px;
@@ -112,10 +113,8 @@
 
 
 </style>
-<style type="text/css">
-    #map {height: 400px;}
-</style>
-<body id="container2">
+
+<body>
 <h1> Thurgau TG</h1>
 <img id="wappen" src="img/2000px-Wappen_Thurgau_matt.svg.png">
 
@@ -128,7 +127,6 @@
 
     <div id="graph"></div>
 
-
 <button id="btn1">Einwohner</button>
 
 
@@ -136,14 +134,13 @@
 <script src="js/app.js"></script>
 </div>
 
+</div>
 
 
 
 
 
-</body>
-<footer>
-    <div>
+    <div id="bezirke">
         <form method="post" action="index.php">
             <label>Bezirke</label>
             <select class="form-control" name="kanton">
@@ -495,7 +492,7 @@
             }
             ?>
     </div>
-</footer>
+</body>
 
 
 
