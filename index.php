@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <title>Startpage</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewpoe" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="lib/leaflet.css"/>
     <script src="lib/leaflet.js"></script>
-    <script src="lib/leaflet.css"></script>
     <script src="data/countries.geojson"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Cantora One' rel='stylesheet'>
     <a href="login.php"><h5 id="login">login</h5></a>
-
-
     <img id="picture1" src="img/Thurgau2.PNG">
     <img id="picture2" src="img/Download.png">
 </head>
+<style type="text/css">
+    #map: { height: 400px }</style>
 <style>
     h2{
         font-family: 'Audiowide';font-size: 50px;
@@ -89,7 +89,12 @@
     <label id="rangeValLabel">Ständige Wohnbevölkerung ab 2015</label>
     <input type="range" min="2015" max="2018" step="1" name="anzTickets" oninput="document.getElementById('rangeValLabel').innerHTML = 'Wohnbevölkerung im Jahr: ' + this.value;">
 
-
+    <div id="map"></div>
+    <script>
+        var map = L.map('map');
+        var countriesLayer = L.geoJson(countries)addTo(map);
+    </script>
+</body>
     <form method="post" action="index.php">
     <div>
 
