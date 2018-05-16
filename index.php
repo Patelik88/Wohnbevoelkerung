@@ -5,23 +5,47 @@
     <title>Startpage</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <meta name="viewpoe" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="lib/leaflet.css"/>
-    <script src="lib/leaflet.js"></script>
-    <script src="data/countries.geojson"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kavivanar" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Cantora One' rel='stylesheet'>
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/topojson.v1.min.js"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <a href="login.php"><h5 id="login">login</h5></a>
-    <img id="picture1" src="img/Thurgau2.PNG">
+
     <img id="picture2" src="img/Download.png">
+
+
 </head>
-<style type="text/css">
-    #map: { height: 400px }</style>
 <style>
     h2{
         font-family: 'Audiowide';font-size: 50px;
-        color:   bisque;
+        color:   bisque; }
+    head{
+        width: 1080px;
+        background-image: url("img/background.jpg");
+        background-size: cover;
+    }
+    h1 {
+        margin-top: 50px;
+        margin-left: 50px;
+        font-family: 'Kavivanar', cursive;
+        font-size: 100px;
     }
 
     label {
@@ -30,38 +54,36 @@
         color: black;
         padding-left: 20px;
     }
-    #container
+     h5{
+
+        font-family: 'Cantora One';font-size: 20px;
+        color: black;
+        padding-left: 20px;
+    }
+    #container2
     {
         width: 1800px;
-        margin-top: 200px;
-        height: 1080px;
+
         margin-left: auto;
         margin-right: auto;
-        background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
         background-color:  white;
+        background-image: url("img/background.jpg");
 
     }
-    head{
 
-        position: absolute;
-       top: 20px;
-        left: 20px;
-    }
-    div{
-        width: 400px;
+  #regler {
 
-        height: 1080px;
-        margin-left: auto;
-        margin-right: auto;
-        background-size: cover;
-        background-color:  white;
-    }
-    #picture1{
-        position: absolute;
-        left: 20px;
-        top: 20px;
+      width: 400px;
+      height: 100px;
+      float: right;
+      margin-right: 150px;
+      margin-top: 300px;
+      background-size: cover;
+      background-color:  white;
+  }
 
-    }
     #picture2 {
         position: absolute;
         width: 30px;
@@ -75,131 +97,155 @@
         top: 20px;
 
     }
+    footer {
 
+        width: 300px;
+        float: bottom;
+        height: 600px;
+    }
 
+#wappen {
+    margin-left: 150px;
+    width: 240px;
+    height: 300px;
+}
 
 
 </style>
 <style type="text/css">
     #map {height: 400px;}
 </style>
-<body id="container" >
+<body id="container2">
+<h1> Thurgau TG</h1>
+<img id="wappen" src="img/2000px-Wappen_Thurgau_matt.svg.png">
 
-<div class="form-group" >
+
+<div class="form-group"  id="regler" >
     <label id="rangeValLabel">Ständige Wohnbevölkerung ab 2015</label>
-    <input type="range" min="2015" max="2018" step="1" name="anzTickets" oninput="document.getElementById('rangeValLabel').innerHTML = 'Wohnbevölkerung im Jahr: ' + this.value;">
+    <input type="range" min="2015" max="2017" step="1" name="anzTickets" oninput="document.getElementById('rangeValLabel').innerHTML = 'Wohnbevölkerung im Jahr: ' + this.value;"></div>
 
-    <div id="map"></div>
-    <script>
-        var map = L.map('map');
-        var countriesLayer = L.geoJson(countries)addTo(map);
-    </script>
+<div id="container1">
+
+    <div id="graph"></div>
+
+
+<button id="btn1">Einwohner</button>
+
+
+<script src="js/main.js"></script>
+<script src="js/app.js"></script>
+</div>
+
+
+
+
+
+
 </body>
-    <form method="post" action="index.php">
+<footer>
     <div>
-
-
-
-
         <form method="post" action="index.php">
-        <label>Bezirke</label>
-        <select class="form-control" name="kanton">
-            <option>Bitte Auswählen</option>
-            <option> Kanton Thurgau</option>
-            <option>   Bezirk Arbon</option>
-            <option>   Bezirk Frauenfeld</option>
-            <option>  Bezirk Kreuzlingen</option>
-            <option>   Bezirk Münchwilen</option>
-            <option>   Bezirk Weinfelden</option>
+            <label>Bezirke</label>
+            <select class="form-control" name="kanton">
+                <option>Bitte Auswählen</option>
+                <option> Kanton Thurgau</option>
+                <option>   Bezirk Arbon</option>
+                <option>   Bezirk Frauenfeld</option>
+                <option>  Bezirk Kreuzlingen</option>
+                <option>   Bezirk Münchwilen</option>
+                <option>   Bezirk Weinfelden</option>
             </select>
-<label>Gemeinden</label>
-<select class="form-control" name="bezirk">
-    <option>Bitte Auswählen</option><option>Aadorf</option>
-    <option>Affeltrangen</option>
-    <option>Altnau</option>
-    <option>Amlikon-Bissegg</option>
-    <option>Amriswil</option>
-    <option>Arbon</option>
-    <option>Basadingen-Schlattingen</option>
-    <option>Berg</option>
-    <option>Berlingen</option>
-    <option>Bettwiesen</option>
-    <option>Bichelsee-Balterswil</option>
-    <option>Birwinken</option>
-    <option>Bischofszell</option>
-    <option>Bottighofen</option>
-    <option>Braunau</option>
-    <option>Bürglen</option>
-    <option>Bussnang</option>
-    <option>Diessenhofen</option>
-    <option>Dozwil</option>
-    <option>Egnach</option>
-    <option>Erlen</option>
-    <option>Ermatingen</option>
-    <option>Eschenz</option>
-    <option>Eschlikon</option>
-    <option>Felben-Wellhausen</option>
-    <option>Fischingen</option>
-    <option>Frauenfeld</option>
-    <option>Gachnang</option>
-    <option>Gottlieben</option>
-    <option>Güttingen</option>
-    <option>Hauptwil-Gottshaus</option>
-    <option>Hefenhofen</option>
-    <option>Herdern</option>
-    <option>Hohentannen</option>
-    <option>Homburg</option>
-    <option>Horn</option>
-    <option>Hüttlingen</option>
-    <option>Hüttwilen</option>
-    <option>Kemmental</option>
-    <option>Kesswil</option>
-    <option>Kradolf-Schönenberg</option>
-    <option>Kreuzlingen</option>
-    <option>Langrickenbach</option>
-    <option>Lengwil</option>
-    <option>Lommis</option>
-    <option>Mammern</option>
-    <option>Märstetten</option>
-    <option>Matzingen</option>
-    <option>Müllheim</option>
-    <option>Münchwilen</option>
-    <option>Münsterlingen</option>
-    <option>Neunforn</option>
-    <option>Pfyn</option>
-    <option>Raperswilen</option>
-    <option>Rickenbach</option>
-    <option>Roggwil</option>
-    <option>Romanshorn</option>
-    <option>Salenstein</option>
-    <option>Salmsach</option>
-    <option>Schlatt</option>
-    <option>Schönholzerswilen</option>
-    <option>Sirnach</option>
-    <option>Sommeri</option>
-    <option>Steckborn</option>
-    <option>Stettfurt</option>
-    <option>Sulgen</option>
-    <option>Tägerwilen</option>
-    <option>Thundorf</option>
-    <option>Tobel-Tägerschen</option>
-    <option>Uesslingen-Buch</option>
-    <option>Uttwil</option>
-    <option>Wagenhausen</option>
-    <option>Wäldi</option>
-    <option>Wängi</option>
-    <option>Warth-Weiningen</option>
-    <option>Weinfelden</option>
-    <option>Wigoltingen</option>
-    <option>Wilen</option>
-    <option>Wuppenau</option>
-    <option>Zihlschlacht-Sitterdorf</option>
+            <label>Gemeinden</label>
+            <select class="form-control" name="bezirk">
+                <option>Bitte Auswählen</option><option>Aadorf</option>
+                <option>Affeltrangen</option>
+                <option>Altnau</option>
+                <option>Amlikon-Bissegg</option>
+                <option>Amriswil</option>
+                <option>Arbon</option>
+                <option>Basadingen-Schlattingen</option>
+                <option>Berg</option>
+                <option>Berlingen</option>
+                <option>Bettwiesen</option>
+                <option>Bichelsee-Balterswil</option>
+                <option>Birwinken</option>
+                <option>Bischofszell</option>
+                <option>Bottighofen</option>
+                <option>Braunau</option>
+                <option>Bürglen</option>
+                <option>Bussnang</option>
+                <option>Diessenhofen</option>
+                <option>Dozwil</option>
+                <option>Egnach</option>
+                <option>Erlen</option>
+                <option>Ermatingen</option>
+                <option>Eschenz</option>
+                <option>Eschlikon</option>
+                <option>Felben-Wellhausen</option>
+                <option>Fischingen</option>
+                <option>Frauenfeld</option>
+                <option>Gachnang</option>
+                <option>Gottlieben</option>
+                <option>Güttingen</option>
+                <option>Hauptwil-Gottshaus</option>
+                <option>Hefenhofen</option>
+                <option>Herdern</option>
+                <option>Hohentannen</option>
+                <option>Homburg</option>
+                <option>Horn</option>
+                <option>Hüttlingen</option>
+                <option>Hüttwilen</option>
+                <option>Kemmental</option>
+                <option>Kesswil</option>
+                <option>Kradolf-Schönenberg</option>
+                <option>Kreuzlingen</option>
+                <option>Langrickenbach</option>
+                <option>Lengwil</option>
+                <option>Lommis</option>
+                <option>Mammern</option>
+                <option>Märstetten</option>
+                <option>Matzingen</option>
+                <option>Müllheim</option>
+                <option>Münchwilen</option>
+                <option>Münsterlingen</option>
+                <option>Neunforn</option>
+                <option>Pfyn</option>
+                <option>Raperswilen</option>
+                <option>Rickenbach</option>
+                <option>Roggwil</option>
+                <option>Romanshorn</option>
+                <option>Salenstein</option>
+                <option>Salmsach</option>
+                <option>Schlatt</option>
+                <option>Schönholzerswilen</option>
+                <option>Sirnach</option>
+                <option>Sommeri</option>
+                <option>Steckborn</option>
+                <option>Stettfurt</option>
+                <option>Sulgen</option>
+                <option>Tägerwilen</option>
+                <option>Thundorf</option>
+                <option>Tobel-Tägerschen</option>
+                <option>Uesslingen-Buch</option>
+                <option>Uttwil</option>
+                <option>Wagenhausen</option>
+                <option>Wäldi</option>
+                <option>Wängi</option>
+                <option>Warth-Weiningen</option>
+                <option>Weinfelden</option>
+                <option>Wigoltingen</option>
+                <option>Wilen</option>
+                <option>Wuppenau</option>
+                <option>Zihlschlacht-Sitterdorf</option>
 
-</select>
+            </select>
             <br>
             <br>
             <br>
             <input type="submit" value="Anschauen" />
+            <br>
+            <br>
+            <br>
             <?php
             if (isset($_POST["kanton"])){
                 $kanton = $_POST["kanton"];
@@ -210,10 +256,11 @@
             }
             function diese($kanton){
                 if ($kanton == "Kanton Thurgau"){
+                    echo '<h5>Thurgau</h5>';
                     echo '<img src="img/Diagramm1.PNG">';}
                 if ($kanton == "Bezirk Arbon"){
-                    echo"gut";
-                }
+                    echo '<img src="img/Diagramm2.PNG">';}
+
                 if ($kanton == "Bezirk Frauenfeld"){
                     echo"gut";
                 }
@@ -235,7 +282,7 @@
 
             function diese1($bezirk){
                 if ($bezirk == "Amriswil"){
-                    echo"gut";}
+                    echo '<img src="img/Diagramm3.PNG">';}
                 if ($bezirk == "Arbon"){
                     echo"gut";
                 }
@@ -447,13 +494,8 @@
                 }
             }
             ?>
-</div>
-
-</div>
-
-
-</form>
-</body>
+    </div>
+</footer>
 
 
 
