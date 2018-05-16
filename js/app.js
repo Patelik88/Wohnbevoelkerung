@@ -297,6 +297,8 @@ for (i = 0; i < muniArr.length; i++) {
 
 init();
 
+
+
 $("button").click(function () {
     switch (this.id) {
         case "btn1":

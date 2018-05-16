@@ -121,7 +121,9 @@
 
 <div class="form-group"  id="regler" >
     <label id="rangeValLabel">Ständige Wohnbevölkerung ab 2015</label>
-    <input type="range" min="2015" max="2017" step="1" name="anzTickets" oninput="document.getElementById('rangeValLabel').innerHTML = 'Wohnbevölkerung im Jahr: ' + this.value;"></div>
+    <input type="range" min="2015" max="2017" step="1" name="anzTickets" oninput="document.getElementById('rangeValLabel').innerHTML = 'Wohnbevölkerung im Jahr: ' + this.value;">
+
+</div>
 
 <div id="container1">
 
@@ -253,13 +255,15 @@
             }
             function diese($kanton){
                 if ($kanton == "Kanton Thurgau"){
-                    echo '<h5>Thurgau</h5>';
+                    echo '<h5>Einwohner Thurgau</h5>';
                     echo '<img src="img/Diagramm1.PNG">';}
                 if ($kanton == "Bezirk Arbon"){
+                    echo '<h5>Einwohner Arbon</h5>';
                     echo '<img src="img/Diagramm2.PNG">';}
 
                 if ($kanton == "Bezirk Frauenfeld"){
-                    echo"gut";
+                    echo '<h5>Einwohner Frauenfeld</h5>';
+                    echo '<img src="img/Diagramm4.PNG">';
                 }
                 if ($kanton == "Bezirk Kreuzlingen"){
                     echo"gut";
@@ -268,7 +272,8 @@
                     echo"gut";
                 }
                 if ($kanton == "Bezirk Weinfelden"){
-                    echo"gut";
+                    echo '<h5>Einwohner Weinfelden</h5>';
+                 echo   '<img src="img/Diagramm5.PNG">';
                 }}
 
             if (isset($_POST["bezirk"])) {
