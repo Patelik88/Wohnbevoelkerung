@@ -109,7 +109,7 @@
         margin-right: 200px;
         margin-top: 150px;
         background-size: cover;
-        background-color: white;
+
     }
 
 

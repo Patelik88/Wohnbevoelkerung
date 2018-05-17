@@ -10,6 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Cantora One' rel='stylesheet'>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
 
 </head>
@@ -43,7 +44,7 @@
 
     label {
 
-        font-family: 'Cantora One';
+        font-family: 'Montserrat', sans-serif; font-size: 17px;
         font-size: 30px;
         color: black;
 
@@ -60,10 +61,10 @@
 
 
     #container {
+        margin-left: 50px;
+        margin-top: 50px;
         width: 300px;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: hsl(110, 100%, 75%);
+
 
 
 
