@@ -126,10 +126,7 @@
         width: 240px;
         height: 300px;
     }
-    #selector {
-        width: 300px;
 
-    }
     #kantone {
         width: 300px;
         height: 50px;
@@ -690,8 +687,9 @@
         }
 
         ?>
-</div>
-</body>
 
+</div>
+
+</body>
 
 </html>
