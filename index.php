@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Kavivanar" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Cantora One' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <script src="js/jquery.min.js"></script>
 
@@ -30,9 +31,15 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <a href="login.php">login</a>
 
-    <img id="picture2" src="img/Download.png">
+    <ul>
+        <li><a class="active" href="index.php">Home</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li style="float:right"><a href="newuser.php">register</a></li>
+        <li style="float:right"><a href="login.php">login</a></li>
+    </ul>
+
+
 
 
 </head>
@@ -45,17 +52,22 @@
         color: bisque;
     }
 
-    head {
-        width: 1080px;
-        background-image: url("img/background.jpg");
-        background-size: cover;
-    }
+
 
     h1 {
-        margin-top: 50px;
-        margin-left: 50px;
+
         font-family: 'Kavivanar', cursive;
         font-size: 100px;
+    }
+    p {
+
+        font-family: 'Montserrat', sans-serif; font-size: 17px;
+        border:2px solid forestgreen;
+        border-radius: 10px;
+       padding-left: 7px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 700px;
     }
 
     label {
@@ -63,7 +75,7 @@
         font-family: 'Cantora One';
         font-size: 30px;
         color: black;
-        padding-left: 20px;
+
     }
 
     h5 {
@@ -74,13 +86,7 @@
 
     }
 
-    a {
-        font-size: 20px;
-        position: absolute;
-        right: 55px;
-        top: 20px;
 
-    }
 
     body {
         width: 1800px;
@@ -91,6 +97,7 @@
         background-color: white;
         background-image: url("img/background.jpg");
         box-sizing: border-box;
+
 
     }
 
@@ -105,18 +112,13 @@
         background-color: white;
     }
 
-    #picture2 {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        right: 20px;
-        top: 20px;
-    }
+
 
     #bezirke {
         margin-top: -300px;
-        width: 300px;
-        margin-bottom: 500px;
+        width: 800px;
+
+
     }
 
     #wappen {
@@ -124,11 +126,64 @@
         width: 240px;
         height: 300px;
     }
+    #selector {
+        width: 300px;
+
+    }
+    #kantone {
+        width: 300px;
+        height: 50px;
+        font-size: 15px;
+
+    }
+    #bezirks{
+        width: 300px;
+        height: 50px;
+        font-size: 15px;
+    }
+    ul {
+
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        margin-left: -50px;
+        margin-right: -50px;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+        border-right:1px solid #bbb;
+    }
+
+    li:last-child {
+        border-right: none;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #4CAF50;
+    }
+
 
 
 </style>
 
 <body>
+
 <h1> Thurgau TG</h1>
 <img id="wappen" src="img/2000px-Wappen_Thurgau_matt.svg.png">
 
@@ -154,10 +209,17 @@
 </div>
 
 
-<div id="bezirke">
-    <form method="post" action="index.php">
+
+<div>
+
+
+    <form method="post" action="index.php" id="bezirke" >
+        <p>Sie wollen wissen wie sich die
+            Einwohnerzahlen im Kanton Thurgau
+            in den letzen 3 Jahren verändert haben? In dem sie in den untenstehenden
+            Boxen ihre gewünschte gemeinde auswählen können sie die Entwicklung der Gemeinde betrachten.</p>
         <label>Bezirke</label>
-        <select class="form-control" name="kanton">
+        <select class="form-control" name="kanton" id="kantone">
             <option>Bitte Auswählen</option>
             <option> Kanton Thurgau</option>
             <option> Bezirk Arbon</option>
@@ -167,7 +229,7 @@
             <option> Bezirk Weinfelden</option>
         </select>
         <label>Gemeinden</label>
-        <select class="form-control" name="bezirk">
+        <select class="form-control" name="bezirk" id="bezirks">
             <option>Bitte Auswählen</option>
             <option>Aadorf</option>
             <option>Affeltrangen</option>
@@ -254,7 +316,7 @@
         <br>
         <br>
         <br>
-        <input type="submit" value="Anschauen"/>
+        <input type="submit" value="Anschauen" class="button"/>
         <br>
         <br>
         <br>

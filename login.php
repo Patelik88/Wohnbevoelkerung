@@ -8,36 +8,118 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Cantora One' rel='stylesheet'>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+
+
 </head>
 <style>
-    h2{
-        font-family: 'Audiowide';font-size: 50px;
-        color:   bisque;
+
+
+
+     h2 {
+         font-family: 'Audiowide';
+         font-size: 50px;
+         color: bisque;
+     }
+
+
+
+    h1 {
+
+        font-family: 'Kavivanar', cursive;
+        font-size: 100px;
     }
-    h5 {
-        font-family: 'Cantora One';font-size: 20px;
-        color: white;
-        padding-left: 20px;
+    p {
+
+        font-family: 'Montserrat', sans-serif; font-size: 17px;
+        border:2px solid forestgreen;
+        border-radius: 10px;
+        padding-left: 7px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 700px;
     }
+
     label {
-        font-family: 'Cantora One';font-size: 20px;
-        color: white;
-        padding-left: 20px;
-    }
-    #container
-    {
-        width: 400px;
-        margin-top: 200px;
-        height: 1080px;
-        margin-left: auto;
-        margin-right: auto;
-        background-size: cover;
-        background-color: cadetblue;
+
+        font-family: 'Cantora One';
+        font-size: 30px;
+        color: black;
 
     }
+
+    h5 {
+
+        font-family: 'Cantora One';
+        font-size: 30px;
+        color: black;
+
+    }
+
+
+
+    #container {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: hsl(110, 100%, 75%);
+
+
+
+
+    }
+
+
+    ul {
+
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+        border-right:1px solid #bbb;
+    }
+
+    li:last-child {
+        border-right: none;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #4CAF50;
+    }
+
+
+
 </style>
-<body id="container">
-<form method="POST" action="login.php">
+
+
+<body>
+<ul>
+    <li><a class="active" href="index.php">Home</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li style="float:right"><a href="newuser.php">register</a></li>
+    <li style="float:right"><a href="login.php">login</a></li>
+</ul>
+<form method="POST" action="login.php" id="container">
     <b><h2>Login</h2></b><br>
     <br>
 
@@ -51,7 +133,7 @@
         <br>
         <br>
         <br>
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" class="button" />
 
         <br>
         <br>
