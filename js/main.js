@@ -32,6 +32,7 @@ function init() {
 
     d3.json("json/tg-municipalities-lakes.json", function(error, tg) {
         switch (btnP) {
+
             case "btn1":
                 g.append("g")
                     .attr("id", "municipalities")
@@ -44,6 +45,48 @@ function init() {
                     .on("mouseout", mouseout)
                     .attr("fill", function(d) {
                         var m = getMPopulation(d);
+                        if (m > 0) {
+                            var a = ((m - (m % Math.round(max / 10))) / Math.round(max / 10));
+                            if (a >= 10) {
+                                a = a - 1;
+                            }
+                            console.log(d.id + ", " + m);
+                            return color[a][1];
+                        }
+                    });
+            case "btn2":
+                g.append("g")
+                    .attr("id", "municipalities")
+                    .selectAll("path")
+                    .data(topojson.feature(tg, tg.objects.municipalities).features)
+                    .enter().append("path")
+                    .attr("d", path)
+                    .on("click", clicked)
+                    .on("mouseover", mouseover)
+                    .on("mouseout", mouseout)
+                    .attr("fill", function(d) {
+                        var m = getMPopulations(d);
+                        if (m > 0) {
+                            var a = ((m - (m % Math.round(max / 10))) / Math.round(max / 10));
+                            if (a >= 10) {
+                                a = a - 1;
+                            }
+                            console.log(d.id + ", " + m);
+                            return color[a][1];
+                        }
+                    });
+            case "btn3":
+                g.append("g")
+                    .attr("id", "municipalities")
+                    .selectAll("path")
+                    .data(topojson.feature(tg, tg.objects.municipalities).features)
+                    .enter().append("path")
+                    .attr("d", path)
+                    .on("click", clicked)
+                    .on("mouseover", mouseover)
+                    .on("mouseout", mouseout)
+                    .attr("fill", function(d) {
+                        var m = getMPopulationes(d);
                         if (m > 0) {
                             var a = ((m - (m % Math.round(max / 10))) / Math.round(max / 10));
                             if (a >= 10) {
@@ -122,14 +165,30 @@ function init() {
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
                 break;
+            case "btn2":
+                graph.style("opacity", .9)
+                    .html(getMName(d) + "<br> Einwohnerzahl: " + getMPopulationes(d))
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+                break;
+            case "btn3":
+                graph.style("opacity", .9)
+                    .html(getMName(d) + "<br> Einwohnerzahl: " + getMPopulations(d))
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+                break;
             default:
                 graph.style("opacity", .9)
                     .html(getMName(d))
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
                 break;
+
+
+
         }
     }
+
 
     function mouseout(d) {
         graph.style("opacity", 0)
@@ -153,10 +212,28 @@ function init() {
             }
         }
     }
+    function getMPopulationes(d) {
+        for (i = 0; i < sechArr.length; i++) {
+            if (d.id === sechArr[i][0]) {
+                return sechArr[i][2];
+                break;
+            }
+        }
+    }
+    function getMPopulations(d) {
+        for (i = 0; i < fuenfArr.length; i++) {
+            if (d.id === fuenfArr[i][0]) {
+                return fuenfArr[i][2];
+                break;
+            }
+        }
+    }
 
     function colM() {
         //d3.select('#municipalities')
 
     }
 }
+
+
 

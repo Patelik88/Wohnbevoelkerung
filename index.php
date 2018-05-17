@@ -26,7 +26,7 @@
 
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <a href="login.php"><h5 id="login">login</h5></a>
+    <a href="login.php"><h6 id="login">login</h6>6></a>
 
     <img id="picture2" src="img/Download.png">
 
@@ -62,6 +62,13 @@
         color: black;
 
     }
+    h6{
+
+        position: absolute;
+        right: 55px;
+        top: 20px;
+
+    }
     body
     {
         width: 1800px;
@@ -93,12 +100,7 @@
         right: 20px;
         top: 20px;
     }
-    #login{
-        position: absolute;
-        right: 55px;
-        top: 20px;
 
-    }
   #bezirke {
 
       width: 300px;
@@ -120,8 +122,11 @@
 
 
 <div class="form-group"  id="regler" >
-    <label id="rangeValLabel">Ständige Wohnbevölkerung ab 2015</label>
-    <input type="range" min="2015" max="2017" step="1" name="anzTickets" oninput="document.getElementById('rangeValLabel').innerHTML = 'Wohnbevölkerung im Jahr: ' + this.value;">
+    <h5>Ständige Wohnbevölkerung ab 2015</h5>
+    <button id="btn1">2017</button>
+    <button id="btn2">2016</button>
+    <button id="btn3">2015</button>
+
 
 </div>
 
@@ -129,13 +134,17 @@
 
     <div id="graph"></div>
 
-<button id="btn1">Einwohner</button>
+
+
+
+
+
 
 
 <script src="js/main.js"></script>
 <script src="js/app.js"></script>
 </div>
-
+</div>
 </div>
 
 

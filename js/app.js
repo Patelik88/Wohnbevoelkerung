@@ -91,94 +91,94 @@ var muniArr = [
 ];
 var sechArr = [
     //Bezirk Arbon, 11 Gemeinden
-    [4436, "Romanshorn", 10000],
-    [4451, "Uttwil", 10000],
-    [4426, "Kesswil", 10000],
-    [4441, "Salmsach", 10000],
-    [4411, "Egnach", 10000],
-    [4401, "Arbon", 10000],
-    [4421, "Horn", 10000],
-    [4431, "Roggwil", 10000],
-    [4461, "Amriswil", 10000],
-    [4406, "Dozwil", 10000],
-    [4416, "Hefenhofen", 10000],
-    [4446, "Sommeri", 10000],
+    [4436, "Romanshorn", 10770],
+    [4451, "Uttwil", 1885],
+    [4426, "Kesswil", 992],
+    [4441, "Salmsach", 1451],
+    [4411, "Egnach", 4861],
+    [4401, "Arbon", 14256],
+    [4421, "Horn", 2600],
+    [4431, "Roggwil", 3050],
+    [4461, "Amriswil", 13293],
+    [4406, "Dozwil", 727],
+    [4416, "Hefenhofen", 1243],
+    [4446, "Sommeri", 549],
 
     //Bezirk Kreuzlingen, 13 Gemeinden
-    [4656, "Güttingen", 5000],
-    [4641, "Altnau", 4000],
-    [4691, "Münsterlingen", 3000],
-    [4643, "Bottighofen", 2000],
-    [4671, "Kreuzlingen", 1000],
-    [4681, "Langrickenbach", 8000],
-    [4683, "Lengwil", 7000],
-    [4666, "Kemmental", 6000],
-    [4696, "Tägerwilen", 5000],
-    [4651, "Gottlieben", 4000],
-    [4646, "Ermatingen", 3000],
-    [4851, "Salenstein", 2000],
-    [4846, "Raperswilen", 1000],
-    [4701, "Wäldi", 8000],
+    [4656, "Güttingen", 1560],
+    [4641, "Altnau", 2161],
+    [4691, "Münsterlingen", 3328],
+    [4643, "Bottighofen", 2180],
+    [4671, "Kreuzlingen", 21537],
+    [4681, "Langrickenbach", 1279],
+    [4683, "Lengwil", 1682],
+    [4666, "Kemmental", 2453],
+    [4696, "Tägerwilen", 4510],
+    [4651, "Gottlieben", 323],
+    [4646, "Ermatingen", 3302],
+    [4851, "Salenstein", 1285],
+    [4846, "Raperswilen", 391],
+    [4701, "Wäldi", 1050],
 
     //Bezirk Weinfelden, 17 Gemeinden
-    [4486, "Hauptwilen-Gottshaus", 100],
-    [4511, "Zihlschlacht-Sitterdorf", 100],
-    [4471, "Bischofszell", 100],
-    [4495, "Hohen-Tannen", 100],
-    [4476, "Erlen", 10000],
-    [4501, "Kradolf-Schönenberg", 100],
-    [4506, "Sulgen", 100],
-    [4911, "Bürglen", 100],
-    [4901, "Birwinken", 100],
-    [4891, "Berg", 100],
-    [4791, "Wuppenau", 100],
-    [4756, "Schönholzerswilen", 100],
-    [4921, "Bussnang", 100],
-    [4946, "Weinfelden", 100],
-    [4941, "Märstetten", 100],
-    [4711, "Affeltrangen", 100],
-    [4881, "Amlikon-Bissegg", 100],
-    [4951, "Wigoltingen", 100],
+    [4486, "Hauptwilen-Gottshaus", 1917],
+    [4511, "Zihlschlacht-Sitterdorf", 2267],
+    [4471, "Bischofszell", 5923],
+    [4495, "Hohen-Tannen", 597],
+    [4476, "Erlen", 3636],
+    [4501, "Kradolf-Schönenberg", 3529],
+    [4506, "Sulgen", 3703],
+    [4911, "Bürglen", 3741],
+    [4901, "Birwinken", 1337],
+    [4891, "Berg", 3301],
+    [4791, "Wuppenau", 1133],
+    [4756, "Schönholzerswilen", 839],
+    [4921, "Bussnang", 2261],
+    [4946, "Weinfelden", 11241],
+    [4941, "Märstetten", 2784],
+    [4711, "Affeltrangen", 2513],
+    [4881, "Amlikon-Bissegg", 1301],
+    [4951, "Wigoltingen", 2410],
 
     //Bezirk Frauenfeld, 22 Gemeinden
-    [4606, "Stettfurt", 10],
-    [4591, "Matzingen", 10],
-    [4611, "Thundorf", 10],
-    [4566, "Frauenfeld", 10],
-    [4571, "Gachnang", 10],
-    [4590, "Hüttlingen", 10],
-    [4561, "Felben-Wellhausen", 10],
-    [4831, "Müllheim", 10],
-    [4841, "Pfyn", 10],
-    [4621, "Warth-Weiningen", 10],
-    [4616, "Uessingen-Buch", 10],
-    [4601, "Neunforn", 10],
-    [4816, "Homburg", 10],
-    [4811, "Herdern", 10],
-    [4821, "Hüttwilen", 10],
-    [4801, "Berlingen", 10],
-    [4864, "Steckborn", 10],
-    [4826, "Mammern", 10],
-    [4806, "Eschenz", 10],
-    [4871, "Wagenhausen", 10],
-    [4545, "Diessenhofen", 10],
-    [4536, "Basadingen-Schlattingen", 10],
-    [4546, "Schlatt (TG)", 10],
+    [4606, "Stettfurt", 1201],
+    [4591, "Matzingen", 2675],
+    [4611, "Thundorf", 1459],
+    [4566, "Frauenfeld", 25058],
+    [4571, "Gachnang", 4211],
+    [4590, "Hüttlingen", 837],
+    [4561, "Felben-Wellhausen", 2743],
+    [4831, "Müllheim", 2930],
+    [4841, "Pfyn", 1943],
+    [4621, "Warth-Weiningen", 1252],
+    [4616, "Uessingen-Buch", 1075],
+    [4601, "Neunforn", 986],
+    [4816, "Homburg", 1537],
+    [4811, "Herdern", 1023],
+    [4821, "Hüttwilen", 1701],
+    [4801, "Berlingen", 887],
+    [4864, "Steckborn", 3740],
+    [4826, "Mammern", 650],
+    [4806, "Eschenz", 1721],
+    [4871, "Wagenhausen", 1654],
+    [4545, "Diessenhofen", 3745],
+    [4536, "Basadingen-Schlattingen", 1811],
+    [4546, "Schlatt (TG)", 1657],
 
     //Bezirk Münchwilen (TG), 12 Gemeinden
-    [4726, "Fischingen", 1],
-    [4751, "Rickenbach (TG)", 1],
-    [4786, "Wilen (TG)", 1],
-    [4761, "Sirnach", 1],
-    [4724, "Eschlikon", 1],
-    [4721, "Bichelsee-Balterswil (Bi.)", 1],
-    [4746, "Münchwilen (TG)", 2],
-    [4781, "Wängi", 1],
-    [4551, "Aadorf", 1],
-    [4723, "Braunau", 1],
-    [4776, "Tobel-Tägerschen", 1],
-    [4716, "Bettwiesen", 1],
-    [4741, "Lommis", 1]
+    [4726, "Fischingen", 2680],
+    [4751, "Rickenbach (TG)", 2768],
+    [4786, "Wilen (TG)", 2482],
+    [4761, "Sirnach", 7697],
+    [4724, "Eschlikon", 4296],
+    [4721, "Bichelsee-Balterswil (Bi.)", 2820],
+    [4746, "Münchwilen (TG)", 5353],
+    [4781, "Wängi", 4614],
+    [4551, "Aadorf", 8838],
+    [4723, "Braunau", 765],
+    [4776, "Tobel-Tägerschen", 1594],
+    [4716, "Bettwiesen", 1172],
+    [4741, "Lommis", 1215]
 ];
 var fuenfArr = [
     //Bezirk Arbon, 11 Gemeinden
@@ -295,7 +295,23 @@ for (i = 0; i < muniArr.length; i++) {
     }
 }
 
+
+var dax = 0;
+for (i = 0; i < fuenfArr.length; i++) {
+    if (dax < fuenfArr[i][2]) {
+        dax = fuenfArr[i][2];
+    }
+}
+
+var lax = 0;
+for (i = 0; i < sechArr.length; i++) {
+    if (lax < sechArr[i][2]) {
+        lax = sechArr[i][2];
+    }
+}
+
 init();
+
 
 
 
@@ -333,3 +349,11 @@ $("button").click(function () {
             break;
     }
 });
+
+
+
+
+
+
+
+
