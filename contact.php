@@ -15,6 +15,7 @@
 
 
     a {
+
         font-size: 20px;
     }
     h2 {
@@ -86,7 +87,7 @@
     #container {
         margin-left: 50px;
         margin-top: 50px;
-        width: 300px;
+        width: 500px;
 
 
 
@@ -135,40 +136,26 @@
 
 </style>
 
-<body>
+<body >
 <ul>
     <li><a class="active" href="index.php">Home</a></li>
     <li><a href="contact.php">Contact</a></li>
     <li style="float:right"><a href="newuser.php">register</a></li>
     <li style="float:right"><a href="login.php">login</a></li>
 </ul>
-<form method="POST" action="registrierung.php" id="container">
-    <b><h2>Registrieren</h2></b>
-    <br>
-    <h5>Name:</h5>  <input id="name" type="text" name="name" />
-    <br>
-    <h5> E-Mail:</h5> <input id="email" type="text" name="email" />
-    <br>
 
-    <h5> Passwort:</h5> <input id="passwort" type="password" name="passwort" />
-    <br>
-    <br>
-    <br>
+<div id="container">
+    <h2>Entwickler</h2>
+<img src="img/bedi.png" width="50" height="50"><h5>Patrik Studer</h5></img>
+    <a id="git" href="https://github.com/Patelik88">Link to Github</a>
+    <a id="insta" href="https://www.instagram.com/s.patrlk/">Link to Instagram</a>
+<br>
+<br>
+<br>
+<img src="img/lingling.png" width="50" height="50"><h5>Daniel Nguy</h5></img>
+    <a id="git" href="https://github.com/DanielNguy">Link to Github</a>
+    <a id="insta" href="https://www.instagram.com/btstaedn/">Link to Instagram</a>
 
-    <input type="submit" value="Registrieren" class="button"/>
-
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 </body>
 </html>

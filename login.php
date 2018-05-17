@@ -17,19 +17,36 @@
 <style>
 
 
-
+a {
+    font-size: 20px;
+}
      h2 {
-         font-family: 'Audiowide';
+         font-family: 'Montserrat', sans-serif;
          font-size: 50px;
-         color: bisque;
+         color: #3e8e41;
+     }
+     #password{
+         width: 300px;
+         height: 30px;
+         border: 2px solid #3e8e41;
+         border-radius: 5px;
+
+
+     }
+     #email{
+         width: 300px;
+         height: 30px;
+         border: 2px solid #3e8e41;
+         border-radius: 5px;
      }
 
 
 
     h1 {
 
-        font-family: 'Kavivanar', cursive;
+        font-family: 'Montserrat', sans-serif;
         font-size: 100px;
+        color: #3e8e41;
     }
     p {
 
@@ -45,15 +62,15 @@
     label {
 
         font-family: 'Montserrat', sans-serif; font-size: 17px;
-        font-size: 30px;
+        font-size: 25px;
         color: black;
 
     }
 
     h5 {
 
-        font-family: 'Cantora One';
-        font-size: 30px;
+        font-family: 'Montserrat', sans-serif; font-size: 17px;
+        font-size: 25px;
         color: black;
 
     }
@@ -116,7 +133,7 @@
 <body>
 <ul>
     <li><a class="active" href="index.php">Home</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="contact.php">Contact</a></li>
     <li style="float:right"><a href="newuser.php">register</a></li>
     <li style="float:right"><a href="login.php">login</a></li>
 </ul>
@@ -125,8 +142,18 @@
     <br>
 
     <form  method="post">
-        <label for="email">E-Mail:</label> <input id="email" type="text" name="email" /><br />
-        <label for="passwort">   Passwort: </label><input type="password" id="password" name="passwort" /><br />
+        <h5 for="email">E-Mail:</h5>
+        <input id="email" type="text" name="email" />
+        <br>
+        <br>
+
+
+
+        <h5 for="passwort">   Passwort: </h5>
+        <input type="password" id="password" name="passwort" />
+        <br>
+        <br>
+        <br>
 
         <h5>Kein Benutzer?</h5>
         <a href="newuser.php">Neuen Benutzer erstellen!</a>
