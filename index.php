@@ -11,6 +11,7 @@
     <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Cantora One' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 
     <script src="js/jquery.min.js"></script>
 
@@ -56,8 +57,9 @@
 
     h1 {
 
-        font-family: 'Kavivanar', cursive;
-        font-size: 100px;
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 80px;
+        margin-top: 50px;
     }
     p {
 
@@ -93,9 +95,7 @@
         margin-left: auto;
         margin-right: auto;
         background-size: contain;
-        background-repeat: no-repeat;
-        background-color: white;
-        background-image: url("img/background.jpg");
+
         box-sizing: border-box;
 
 
@@ -104,10 +104,10 @@
     #regler {
 
         width: 400px;
-        height: 100px;
+        height: 150px;
         float: right;
         margin-right: 200px;
-        margin-top: 150px;
+        margin-top: 100px;
         background-size: cover;
 
     }
@@ -115,7 +115,7 @@
 
 
     #bezirke {
-        margin-top: -300px;
+        margin-top: -400px;
         width: 800px;
 
 
@@ -123,8 +123,9 @@
 
     #wappen {
         margin-left: 150px;
-        width: 240px;
-        height: 300px;
+        margin-top: 50px;
+        width: 160px;
+        height: 200px;
     }
 
     #kantone {
