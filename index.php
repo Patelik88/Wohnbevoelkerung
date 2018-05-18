@@ -12,6 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Cantora One' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
 
     <script src="js/jquery.min.js"></script>
 
@@ -74,7 +75,7 @@
 
     label {
 
-        font-family: 'Cantora One';
+        font-family: 'Hind', sans-serif;
         font-size: 30px;
         color: black;
 
@@ -82,9 +83,22 @@
 
     h5 {
 
-        font-family: 'Cantora One';
+        font-family: 'Hind', sans-serif;
+           font-size: 30px;
+        font-weight: bold;
+           color: black;
+
+       }
+    #thurgau {
+
+        font-family: 'Hind', sans-serif;
         font-size: 30px;
+        font-weight: bold;
         color: black;
+        margin-top: -50px;
+        float: right;
+        margin-right: 370px;
+        text-decoration: #111111 underline;
 
     }
 
@@ -199,6 +213,10 @@
 <div id="container1">
 
     <div id="graph"></div>
+    <div id="thurgau">Kanton Thurgau</div>
+
+    <div id="pieChart"></div>
+    <div id="barChart"></div>
 
 
     <script src="js/main.js"></script>
@@ -216,18 +234,18 @@
         <p>Sie wollen wissen wie sich die
             Einwohnerzahlen im Kanton Thurgau
             in den letzen 3 Jahren verändert haben? In dem sie in den untenstehenden
-            Boxen ihre gewünschte gemeinde auswählen können sie die Entwicklung der Gemeinde betrachten.</p>
-        <label>Bezirke</label>
+            Boxen ihre gewünschte Gemeinde auswählen, können sie die Entwicklung der Gemeinde betrachten.</p>
+        <label>Bezirke:</label>
         <select class="form-control" name="kanton" id="kantone">
             <option>Bitte Auswählen</option>
-            <option> Kanton Thurgau</option>
+
             <option> Bezirk Arbon</option>
             <option> Bezirk Frauenfeld</option>
             <option> Bezirk Kreuzlingen</option>
             <option> Bezirk Münchwilen</option>
             <option> Bezirk Weinfelden</option>
         </select>
-        <label>Gemeinden</label>
+        <label>Gemeinden:</label>
         <select class="form-control" name="bezirk" id="bezirks">
             <option>Bitte Auswählen</option>
             <option>Aadorf</option>
@@ -327,12 +345,8 @@
 
 
         }
-        function diese($kanton)
-        {
-            if ($kanton == "Kanton Thurgau") {
-                echo '<h5>Einwohner Thurgau</h5>';
-                echo '<img src="img/Diagramm1.PNG">';
-            }
+        function diese($kanton){
+
             if ($kanton == "Bezirk Arbon") {
                 echo '<h5>Einwohner Arbon</h5>';
                 echo '<img src="img/Diagramm2.PNG">';
@@ -689,6 +703,8 @@
 
         ?>
 
+
+
 </div>
 
 </body>
@@ -697,9 +713,11 @@
     #pieChart {
         position:absolute;
         margin-top: 50px;
-        left:10px;
+        left:900px;
         width:400px;
         height: 200px;
+        text-align: center;
+
     }
 
 
@@ -707,14 +725,14 @@
     #lineChart {
         position:absolute;
         top:10px;
-        left:410px;
+        left:810px;
         height: 150px;
     }
 
     #barChart {
         position:absolute;
         margin-top: 100px;
-        left:410px;
+        left:1310px;
         height: 400px;
     }
 
@@ -803,8 +821,7 @@
 </style>
 
 
-<div id="pieChart"></div>
-<div id="barChart"></div>
+
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript">
 
