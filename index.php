@@ -694,249 +694,524 @@
 </body>
 <style>
 
-    path {  stroke: #fff; }
-    path:hover {  opacity:0.9; }
-    .axis {  font: 10px sans-serif; }
-    .legend tr{    border-bottom:1px solid grey; }
-    .legend tr:first-child{    border-top:1px solid grey; }
+    #pieChart {
+        position:absolute;
+        margin-top: 50px;
+        left:10px;
+        width:400px;
+        height: 200px;
+    }
 
-    .axis path,
-    .axis line {
+
+
+    #lineChart {
+        position:absolute;
+        top:10px;
+        left:410px;
+        height: 150px;
+    }
+
+    #barChart {
+        position:absolute;
+        margin-top: 100px;
+        left:410px;
+        height: 400px;
+    }
+
+    .slice {
+        font-size: 12pt;
+        font-family: Verdana;
+        fill: white; //svg specific - instead of color
+    font-weight: bold;
+    }
+
+    /*for line chart*/
+    .axis path, .axis line {
         fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
+        stroke: black;
+        shape-rendering: crispEdges; //The shape-rendering property is an SVG attribute, used here to make sure our axis and its tick mark lines are pixel-perfect.
     }
 
-    .x.axis path {  display: none; }
-    .legend{
-        margin-bottom:76px;
-        display:inline-block;
-        border-collapse: collapse;
-        border-spacing: 0px;
+    .line {
+        fill: none;
+        /*stroke: steelblue;*/
+        stroke-width: 3px;
     }
-    .legend td{
-        padding:4px 5px;
-        vertical-align:bottom;
+
+    .dot {
+        /*fill: white;*/
+        /*stroke: steelblue;*/
+        stroke-width: 1.5px;
     }
-    .legendFreq, .legendPerc{
-        align:right;
-        width:50px;
+
+
+    .axis text {
+        font-family: Verdana;
+        font-size: 11px;
     }
+
+    .title {
+        font-family: Verdana;
+        font-size: 15px;
+
+    }
+
+    .xAxis {
+        font-family: verdana;
+        font-size: 11px;
+        fill: black;
+    }
+
+    .yAxis {
+        font-family: verdana;
+        font-size: 11px;
+        fill: white;
+    }
+
+
+    table {
+        border-collapse:collapse;
+        border: 0px;
+        font-family: Verdana;
+        color: #5C5558;
+        font-size: 12px;
+        text-align: right;
+    }
+
+    td {
+        padding-left: 10px;
+    }
+
+    #lineChartTitle1 {
+        font-family: Verdana;
+        font-size  : 14px;
+        fill       : lightgrey;
+        font-weight: bold;
+        text-anchor: middle;
+    }
+
+    #lineChartTitle2 {
+        font-family: Verdana;
+        font-size  : 72px;
+        fill       : grey;
+        text-anchor: middle;
+        font-weight: bold;
+        /*font-style: italic;*/
+    }
+
 
 </style>
 
-<div id='dashboard'>
-</div>
+
+<div id="pieChart"></div>
+<div id="barChart"></div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
-    function dashboard(id, fData){
-        var barColor = 'steelblue';
-        function segColor(c){ return {low:"#807dba", mid:"#e08214",high:"#41ab5d"}[c]; }
+<script type="text/javascript">
 
-        // compute total for each state.
-        fData.forEach(function(d){d.total=d.freq.low+d.freq.mid+d.freq.high;});
+    /*
+    ################ FORMATS ##################
+    -------------------------------------------
+    */
 
-        // function to handle histogram.
-        function histoGram(fD){
-            var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-            hGDim.w = 500 - hGDim.l - hGDim.r,
-                hGDim.h = 300 - hGDim.t - hGDim.b;
 
-            //create svg for histogram.
-            var hGsvg = d3.select(id).append("svg")
-                .attr("width", hGDim.w + hGDim.l + hGDim.r)
-                .attr("height", hGDim.h + hGDim.t + hGDim.b).append("g")
-                .attr("transform", "translate(" + hGDim.l + "," + hGDim.t + ")");
+    var 	formatAsPercentage = d3.format("%"),
+        formatAsPercentage1Dec = d3.format(".1%"),
+        formatAsInteger = d3.format(","),
+        fsec = d3.time.format("%S s"),
+        fmin = d3.time.format("%M m"),
+        fhou = d3.time.format("%H h"),
+        fwee = d3.time.format("%a"),
+        fdat = d3.time.format("%d d"),
+        fmon = d3.time.format("%b")
+    ;
 
-            // create function for x-axis mapping.
-            var x = d3.scale.ordinal().rangeRoundBands([0, hGDim.w], 0.1)
-                .domain(fD.map(function(d) { return d[0]; }));
+    /*
+    ############# PIE CHART ###################
+    -------------------------------------------
+    */
 
-            // Add x-axis to the histogram svg.
-            hGsvg.append("g").attr("class", "x axis")
-                .attr("transform", "translate(0," + hGDim.h + ")")
-                .call(d3.svg.axis().scale(x).orient("bottom"));
 
-            // Create function for y-axis map.
-            var y = d3.scale.linear().range([hGDim.h, 0])
-                .domain([0, d3.max(fD, function(d) { return d[1]; })]);
 
-            // Create bars for histogram to contain rectangles and freq labels.
-            var bars = hGsvg.selectAll(".bar").data(fD).enter()
-                .append("g").attr("class", "bar");
+    function dsPieChart(){
 
-            //create the rectangles.
-            bars.append("rect")
-                .attr("x", function(d) { return x(d[0]); })
-                .attr("y", function(d) { return y(d[1]); })
-                .attr("width", x.rangeBand())
-                .attr("height", function(d) { return hGDim.h - y(d[1]); })
-                .attr('fill',barColor)
-                .on("mouseover",mouseover)// mouseover is defined below.
-                .on("mouseout",mouseout);// mouseout is defined below.
+        var dataset = [
+                {category: "Mann", measure: 0.502},
+                {category: "Frau", measure: 0.498},
 
-            //Create the frequency labels above the rectangles.
-            bars.append("text").text(function(d){ return d3.format(",")(d[1])})
-                .attr("x", function(d) { return x(d[0])+x.rangeBand()/2; })
-                .attr("y", function(d) { return y(d[1])-5; })
-                .attr("text-anchor", "middle");
+            ]
+        ;
 
-            function mouseover(d){  // utility function to be called on mouseover.
-                // filter for selected state.
-                var st = fData.filter(function(s){ return s.State == d[0];})[0],
-                    nD = d3.keys(st.freq).map(function(s){ return {type:s, freq:st.freq[s]};});
+        var 	width = 400,
+            height = 400,
+            outerRadius = Math.min(width, height) / 2,
+            innerRadius = outerRadius * .999,
+            // for animation
+            innerRadiusFinal = outerRadius * .5,
+            innerRadiusFinal3 = outerRadius* .45,
+            color = d3.scale.category20()    //builtin range of colors
+        ;
 
-                // call update functions of pie-chart and legend.
-                pC.update(nD);
-                leg.update(nD);
-            }
+        var vis = d3.select("#pieChart")
+            .append("svg:svg")              //create the SVG element inside the <body>
+            .data([dataset])                   //associate our data with the document
+            .attr("width", width)           //set the width and height of our visualization (these will be attributes of the <svg> tag
+            .attr("height", height)
+            .append("svg:g")                //make a group to hold our pie chart
+            .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")")    //move the center of the pie chart from 0, 0 to radius, radius
+        ;
 
-            function mouseout(d){    // utility function to be called on mouseout.
-                // reset the pie-chart and legend.
-                pC.update(tF);
-                leg.update(tF);
-            }
+        var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
+            .outerRadius(outerRadius).innerRadius(innerRadius);
 
-            // create function to update the bars. This will be used by pie-chart.
-            hG.update = function(nD, color){
-                // update the domain of the y-axis map to reflect change in frequencies.
-                y.domain([0, d3.max(nD, function(d) { return d[1]; })]);
+        // for animation
+        var arcFinal = d3.svg.arc().innerRadius(innerRadiusFinal).outerRadius(outerRadius);
+        var arcFinal3 = d3.svg.arc().innerRadius(innerRadiusFinal3).outerRadius(outerRadius);
 
-                // Attach the new data to the bars.
-                var bars = hGsvg.selectAll(".bar").data(nD);
+        var pie = d3.layout.pie()           //this will create arc data for us given a list of values
+            .value(function(d) { return d.measure; });    //we must tell it out to access the value of each element in our data array
 
-                // transition the height and color of rectangles.
-                bars.select("rect").transition().duration(500)
-                    .attr("y", function(d) {return y(d[1]); })
-                    .attr("height", function(d) { return hGDim.h - y(d[1]); })
-                    .attr("fill", color);
+        var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
+            .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
+            .enter()                            //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
+            .append("svg:g")                //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
+            .attr("class", "slice")    //allow us to style things in the slices (like text)
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout)
+            .on("click", up)
+        ;
 
-                // transition the frequency labels location and change value.
-                bars.select("text").transition().duration(500)
-                    .text(function(d){ return d3.format(",")(d[1])})
-                    .attr("y", function(d) {return y(d[1])-5; });
-            }
-            return hG;
+        arcs.append("svg:path")
+            .attr("fill", function(d, i) { return color(i); } ) //set the color for each slice to be chosen from the color function defined above
+            .attr("d", arc)     //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+            .append("svg:title") //mouseover title showing the figures
+            .text(function(d) { return d.data.category + ": " + formatAsPercentage(d.data.measure); });
+
+        d3.selectAll("g.slice").selectAll("path").transition()
+            .duration(750)
+            .delay(10)
+            .attr("d", arcFinal )
+        ;
+
+        // Add a label to the larger arcs, translated to the arc centroid and rotated.
+        // source: http://bl.ocks.org/1305337#index.html
+        arcs.filter(function(d) { return d.endAngle - d.startAngle > .2; })
+            .append("svg:text")
+            .attr("dy", ".35em")
+            .attr("text-anchor", "middle")
+            .attr("transform", function(d) { return "translate(" + arcFinal.centroid(d) + ")rotate(" + angle(d) + ")"; })
+            //.text(function(d) { return formatAsPercentage(d.value); })
+            .text(function(d) { return d.data.category; })
+        ;
+
+        // Computes the label angle of an arc, converting from radians to degrees.
+        function angle(d) {
+            var a = (d.startAngle + d.endAngle) * 90 / Math.PI - 90;
+            return a > 90 ? a - 180 : a;
         }
 
-        // function to handle pieChart.
-        function pieChart(pD){
-            var pC ={},    pieDim ={w:250, h: 250};
-            pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
 
-            // create svg for pie chart.
-            var piesvg = d3.select(id).append("svg")
-                .attr("width", pieDim.w).attr("height", pieDim.h).append("g")
-                .attr("transform", "translate("+pieDim.w/2+","+pieDim.h/2+")");
+        // Pie chart title
+        vis.append("svg:text")
+            .attr("dy", ".35em")
+            .attr("text-anchor", "middle")
+            .text("Geschlechtsanteil")
+            .attr("class","title")
+        ;
 
-            // create function to draw the arcs of the pie slices.
-            var arc = d3.svg.arc().outerRadius(pieDim.r - 10).innerRadius(0);
 
-            // create a function to compute the pie slice angles.
-            var pie = d3.layout.pie().sort(null).value(function(d) { return d.freq; });
 
-            // Draw the pie slices.
-            piesvg.selectAll("path").data(pie(pD)).enter().append("path").attr("d", arc)
-                .each(function(d) { this._current = d; })
-                .style("fill", function(d) { return segColor(d.data.type); })
-                .on("mouseover",mouseover).on("mouseout",mouseout);
-
-            // create function to update pie-chart. This will be used by histogram.
-            pC.update = function(nD){
-                piesvg.selectAll("path").data(pie(nD)).transition().duration(500)
-                    .attrTween("d", arcTween);
-            }
-            // Utility function to be called on mouseover a pie slice.
-            function mouseover(d){
-                // call the update function of histogram with new data.
-                hG.update(fData.map(function(v){
-                    return [v.State,v.freq[d.data.type]];}),segColor(d.data.type));
-            }
-            //Utility function to be called on mouseout a pie slice.
-            function mouseout(d){
-                // call the update function of histogram with all data.
-                hG.update(fData.map(function(v){
-                    return [v.State,v.total];}), barColor);
-            }
-            // Animating the pie-slice requiring a custom function which specifies
-            // how the intermediate paths should be drawn.
-            function arcTween(a) {
-                var i = d3.interpolate(this._current, a);
-                this._current = i(0);
-                return function(t) { return arc(i(t));    };
-            }
-            return pC;
+        function mouseover() {
+            d3.select(this).select("path").transition()
+                .duration(750)
+                //.attr("stroke","red")
+                //.attr("stroke-width", 1.5)
+                .attr("d", arcFinal3)
+            ;
         }
 
-        // function to handle legend.
-        function legend(lD){
-            var leg = {};
-
-            // create table for legend.
-            var legend = d3.select(id).append("table").attr('class','legend');
-
-            // create one row per segment.
-            var tr = legend.append("tbody").selectAll("tr").data(lD).enter().append("tr");
-
-            // create the first column for each segment.
-            tr.append("td").append("svg").attr("width", '16').attr("height", '16').append("rect")
-                .attr("width", '16').attr("height", '16')
-                .attr("fill",function(d){ return segColor(d.type); });
-
-            // create the second column for each segment.
-            tr.append("td").text(function(d){ return d.type;});
-
-            // create the third column for each segment.
-            tr.append("td").attr("class",'legendFreq')
-                .text(function(d){ return d3.format(",")(d.freq);});
-
-            // create the fourth column for each segment.
-            tr.append("td").attr("class",'legendPerc')
-                .text(function(d){ return getLegend(d,lD);});
-
-            // Utility function to be used to update the legend.
-            leg.update = function(nD){
-                // update the data attached to the row elements.
-                var l = legend.select("tbody").selectAll("tr").data(nD);
-
-                // update the frequencies.
-                l.select(".legendFreq").text(function(d){ return d3.format(",")(d.freq);});
-
-                // update the percentage column.
-                l.select(".legendPerc").text(function(d){ return getLegend(d,nD);});
-            }
-
-            function getLegend(d,aD){ // Utility function to compute percentage.
-                return d3.format("%")(d.freq/d3.sum(aD.map(function(v){ return v.freq; })));
-            }
-
-            return leg;
+        function mouseout() {
+            d3.select(this).select("path").transition()
+                .duration(750)
+                //.attr("stroke","blue")
+                //.attr("stroke-width", 1.5)
+                .attr("d", arcFinal)
+            ;
         }
 
-        // calculate total frequency by segment for all state.
-        var tF = ['low','mid','high'].map(function(d){
-            return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))};
-        });
+        function up(d, i) {
 
-        // calculate total frequency by state for all segment.
-        var sF = fData.map(function(d){return [d.State,d.total];});
+            /* update bar chart when user selects piece of the pie chart */
+            //updateBarChart(dataset[i].category);
+            updateBarChart(d.data.category, color(i));
+            updateLineChart(d.data.category, color(i));
 
-        var hG = histoGram(sF), // create the histogram.
-            pC = pieChart(tF), // create the pie-chart.
-            leg= legend(tF);  // create the legend.
+        }
     }
+
+    dsPieChart();
+
+    /*
+    ############# BAR CHART ###################
+    -------------------------------------------
+    */
+
+
+
+    var datasetBarChart = [
+            { group: "All", category: 2015, measure: 266510 },
+            { group: "All", category: 2016, measure: 269731},
+            { group: "All", category: 2017, measure: 272780 },
+            { group: "Frau", category: 2015, measure: 132602 },
+            { group: "Frau", category: 2016, measure: 134178 },
+            { group: "Frau", category: 2017, measure: 135628 },
+            { group: "Mann", category: 2015, measure: 133908 },
+            { group: "Mann", category: 2016, measure: 135553 },
+            { group: "Mann", category: 2017, measure: 137152},
+
+        ]
+    ;
+
+    // set initial group value
+    var group = "All";
+
+    function datasetBarChosen(group) {
+        var ds = [];
+        for (x in datasetBarChart) {
+            if(datasetBarChart[x].group==group){
+                ds.push(datasetBarChart[x]);
+            }
+        }
+        return ds;
+    }
+
+
+    function dsBarChartBasics() {
+
+        var margin = {top: 30, right: 5, bottom: 20, left: 50},
+            width = 500 - margin.left - margin.right,
+            height = 250 - margin.top - margin.bottom,
+            colorBar = d3.scale.category20(),
+            barPadding = 1
+        ;
+
+        return {
+            margin : margin,
+            width : width,
+            height : height,
+            colorBar : colorBar,
+            barPadding : barPadding
+        }
+            ;
+    }
+
+    function dsBarChart() {
+
+        var firstDatasetBarChart = datasetBarChosen(group);
+
+        var basics = dsBarChartBasics();
+
+        var margin = basics.margin,
+            width = basics.width,
+            height = basics.height,
+            colorBar = basics.colorBar,
+            barPadding = basics.barPadding
+        ;
+
+        var 	xScale = d3.scale.linear()
+            .domain([0, firstDatasetBarChart.length])
+            .range([0, width])
+        ;
+
+        // Create linear y scale
+        // Purpose: No matter what the data is, the bar should fit into the svg area; bars should not
+        // get higher than the svg height. Hence incoming data needs to be scaled to fit into the svg area.
+        var yScale = d3.scale.linear()
+            // use the max funtion to derive end point of the domain (max value of the dataset)
+            // do not use the min value of the dataset as min of the domain as otherwise you will not see the first bar
+                .domain([0, d3.max(firstDatasetBarChart, function(d) { return d.measure; })])
+                // As coordinates are always defined from the top left corner, the y position of the bar
+                // is the svg height minus the data value. So you basically draw the bar starting from the top.
+                // To have the y position calculated by the range function
+                .range([height, 0])
+        ;
+
+        //Create SVG element
+
+        var svg = d3.select("#barChart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .attr("id","barChartPlot")
+        ;
+
+        var plot = svg
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        ;
+
+        plot.selectAll("rect")
+            .data(firstDatasetBarChart)
+            .enter()
+            .append("rect")
+            .attr("x", function(d, i) {
+                return xScale(i);
+            })
+            .attr("width", width / firstDatasetBarChart.length - barPadding)
+            .attr("y", function(d) {
+                return yScale(d.measure);
+            })
+            .attr("height", function(d) {
+                return height-yScale(d.measure);
+            })
+            .attr("fill", "lightgrey")
+        ;
+
+
+        // Add y labels to plot
+
+        plot.selectAll("text")
+            .data(firstDatasetBarChart)
+            .enter()
+            .append("text")
+            .text(function(d) {
+                return formatAsInteger(d3.round(d.measure));
+            })
+            .attr("text-anchor", "middle")
+            // Set x position to the left edge of each bar plus half the bar width
+            .attr("x", function(d, i) {
+                return (i * (width / firstDatasetBarChart.length)) + ((width / firstDatasetBarChart.length - barPadding) / 2);
+            })
+            .attr("y", function(d) {
+                return yScale(d.measure) + 14;
+            })
+            .attr("class", "yAxis")
+        /* moved to CSS
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "11px")
+        .attr("fill", "white")
+        */
+        ;
+
+        // Add x labels to chart
+
+        var xLabels = svg
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + (margin.top + height)  + ")")
+        ;
+
+        xLabels.selectAll("text.xAxis")
+            .data(firstDatasetBarChart)
+            .enter()
+            .append("text")
+            .text(function(d) { return d.category;})
+            .attr("text-anchor", "middle")
+            // Set x position to the left edge of each bar plus half the bar width
+            .attr("x", function(d, i) {
+                return (i * (width / firstDatasetBarChart.length)) + ((width / firstDatasetBarChart.length - barPadding) / 2);
+            })
+            .attr("y", 15)
+            .attr("class", "xAxis")
+        //.attr("style", "font-size: 12; font-family: Helvetica, sans-serif")
+        ;
+
+        // Title
+
+        svg.append("text")
+            .attr("x", (width + margin.left + margin.right)/2)
+            .attr("y", 15)
+            .attr("class","title")
+            .attr("text-anchor", "middle")
+            .text("Einwohnerzahlen")
+        ;
+    }
+
+    dsBarChart();
+
+    /* ** UPDATE CHART ** */
+
+    /* updates bar chart on request */
+
+    function updateBarChart(group, colorChosen) {
+
+        var currentDatasetBarChart = datasetBarChosen(group);
+
+        var basics = dsBarChartBasics();
+
+        var margin = basics.margin,
+            width = basics.width,
+            height = basics.height,
+            colorBar = basics.colorBar,
+            barPadding = basics.barPadding
+        ;
+
+        var 	xScale = d3.scale.linear()
+            .domain([0, currentDatasetBarChart.length])
+            .range([0, width])
+        ;
+
+
+        var yScale = d3.scale.linear()
+            .domain([0, d3.max(currentDatasetBarChart, function(d) { return d.measure; })])
+            .range([height,0])
+        ;
+
+        var svg = d3.select("#barChart svg");
+
+        var plot = d3.select("#barChartPlot")
+            .datum(currentDatasetBarChart)
+        ;
+
+        /* Note that here we only have to select the elements - no more appending! */
+        plot.selectAll("rect")
+            .data(currentDatasetBarChart)
+            .transition()
+            .duration(750)
+            .attr("x", function(d, i) {
+                return xScale(i);
+            })
+            .attr("width", width / currentDatasetBarChart.length - barPadding)
+            .attr("y", function(d) {
+                return yScale(d.measure);
+            })
+            .attr("height", function(d) {
+                return height-yScale(d.measure);
+            })
+            .attr("fill", colorChosen)
+        ;
+
+        plot.selectAll("text.yAxis") // target the text element(s) which has a yAxis class defined
+            .data(currentDatasetBarChart)
+            .transition()
+            .duration(750)
+            .attr("text-anchor", "middle")
+            .attr("x", function(d, i) {
+                return (i * (width / currentDatasetBarChart.length)) + ((width / currentDatasetBarChart.length - barPadding) / 2);
+            })
+            .attr("y", function(d) {
+                return yScale(d.measure) + 14;
+            })
+            .text(function(d) {
+                return formatAsInteger(d3.round(d.measure));
+            })
+            .attr("class", "yAxis")
+        ;
+
+
+        svg.selectAll("text.title") // target the text element(s) which has a title class defined
+            .attr("x", (width + margin.left + margin.right)/2)
+            .attr("y", 15)
+            .attr("class","title")
+            .attr("text-anchor", "middle")
+            .text("Einwohnerzahl " + group)
+        ;
+    }
+
+
+
+
 </script>
 
-<script>
-    var freqData=[
-        {State:'2015',freq:{low:4786, mid:1319, high:249}}
-        ,{State:'2016',freq:{low:1101, mid:412, high:674}}
-        ,{State:'2017',freq:{low:932, mid:2149, high:418}}
-
-    ];
 
 
-    dashboard('#dashboard',freqData);
-</script>
 
 </html>
